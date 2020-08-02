@@ -1,0 +1,18 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="ion-text-justify" color="dark">
+    <ion-grid>
+      <ion-row class="ion-justify-content-between">
+        <ion-title>
+          <a routerLink="/" class="logo">TODO</a>
+        </ion-title>
+        <ion-text *ngIf="user" class="icon-add ion-margin-end">
+          {{ user.email }}
+        </ion-text>
+        <ion-text *ngIf="user" class="icon-add ion-margin-end" (click)="logout()">
+          Logout
+        </ion-text>
+        <ion-item *ngIf="!user" (click)="signIn()"> Sign in </ion-item>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>

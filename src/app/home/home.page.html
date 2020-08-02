@@ -1,0 +1,24 @@
+<app-header></app-header>
+
+<ion-content>
+
+  <ion-button color="primary" expand="full" (click)="presentModal()" class="btn-add">
+    <ion-icon name="add" class="icon-add ion-margin-end"></ion-icon>
+    Add new
+  </ion-button>
+
+<ion-grid>
+  <ion-row>
+    <ion-col 
+      *ngFor="let todo of todos$ | async; let i=index; trackBy: trackById" 
+      size="12" size-md="6" size-lg="4"
+      (click)="curr_id = todo.id;">
+      <app-single-todo 
+        [todo]="todo"
+        [ngClass]="{ 'active-todo' :  curr_id == todo.id}">
+      </app-single-todo>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>

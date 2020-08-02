@@ -1,0 +1,44 @@
+<ion-row *ngIf="!alowEdit" class="task ion-margin">
+  <ion-col [class.completed]="todo?.isCompleted" size="7.5">
+    <strong>{{ todo.task }}</strong>
+  </ion-col>
+  <ion-col size="1.5" class="ion-text-end" *ngIf="todo?.isCompleted">
+    <ion-icon name="icon-refresh" (click)="resetTodo(todo);" class="icon icon-refresh">
+    </ion-icon>
+  </ion-col>
+  <ion-col size="1.5" class="ion-text-end" *ngIf="!todo?.isCompleted">
+    <ion-icon name="icon-completed" (click)="markTodoAsCompleted(todo);" class="icon icon-completed">
+    </ion-icon>
+  </ion-col>
+  <ion-col size="1.5" class="ion-text-end">
+    <ion-icon name="icon-edit" (click)="showEditBlock();" class="icon icon-edit">
+    </ion-icon>
+  </ion-col>
+  <ion-col size="1.5" class="ion-text-end">
+    <ion-icon name="icon-remove" (click)="removeSingleTodo()" class="icon icon-remove"></ion-icon>
+  </ion-col>
+</ion-row>
+
+<ion-row *ngIf="alowEdit" class="task" [class.edit-block]="alowEdit" >
+  <ion-col>
+    <form #editForm="ngForm" (ngSubmit)="editSingleTodo(editForm.value)">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-input [(ngModel)]="todo.task" type="text" ngModel task="ngModel" name="task"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-center">
+          <ion-col>
+            <ion-button color="light" expand="block" (click)="alowEdit = false" class="btn-cancel">Cancel</ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button type="submit" expand="block" color="primary" class="btn-save">Save</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </ion-col>
+</ion-row>

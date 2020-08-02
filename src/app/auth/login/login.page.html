@@ -1,0 +1,28 @@
+<app-header></app-header>
+
+<ion-content class="ion-padding">
+  <h2 class="ion-text-center">Sign in</h2>
+  <form #signInForm="ngForm" (ngSubmit)="signIn(signInForm.value)">
+    <ion-item *ngIf="authError" color="danger">
+      {{ authError.message }}
+    </ion-item>
+    <ion-item>
+      <ion-input #input ngModel type="text" #email="ngModel" name="email" placeholder="Your e-mail"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input ngModel type="password" #password="ngModel" name="password" placeholder="Your password"></ion-input>
+    </ion-item>
+    <ion-grid class="ion-no-padding ion-text-center">
+      <ion-row class="ion-justify-content-center ion-align-items-center">
+        <ion-col>
+          <ion-button type="submit" expand="block" class="ion-magin">Login</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <a routerLink="/registration">Create account</a>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
