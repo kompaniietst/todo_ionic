@@ -18,17 +18,7 @@ export class AuthService {
   constructor(
     private fireAuth: AngularFireAuth,
     private router: Router,
-  ) {
-    this.authorizeIfUserExistInLocalstorage();
-  }
-
-  authorizeIfUserExistInLocalstorage() {
-    const user = JSON.parse(localStorage.getItem("user"));
-
-    if (user) {
-      this.currUserBehaviorSubject.next(user);
-    }
-  }
+  ) { }
 
   get isAuthorized() {
     return this.currUserBehaviorSubject.value ? true : false;

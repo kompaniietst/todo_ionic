@@ -59,7 +59,7 @@ export class SingleTodoComponent implements OnInit {
 
   showEditBlock() {
     this.alowEdit = true;
-    // setTimeout(() => this.input.setFocus(), 150);
+    setTimeout(() => this.input.setFocus(), 150);
   }
 
   ngOnInit() {
